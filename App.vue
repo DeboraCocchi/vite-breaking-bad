@@ -12,11 +12,13 @@ export default {
   }
 }
 </script>
+
 <template>
-  
+<AppHeader title="Breaking Bad Api"/>
+<CharactersList/>
 </template>
 
 
 <style lang="scss">
-  @use './styles/general;
+ @use '/src/styles/general.scss';
 </style>
