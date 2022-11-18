@@ -1,6 +1,6 @@
 <script>
 import {store} from '../data/store'
-import CharacterCard from './CharacterCard.vue'
+import CharacterCard from '../components/CharacterCard.vue'
 export default {
   name:'CharactersList',
   components:{
@@ -14,27 +14,46 @@ export default {
 }
 </script>
 <template>
-  <div class="container dc-container">
-      <div class="row" v-if="store.isLoaded">
-        breaking bad
+<main>
+  <div class="dc-container">
+    <div class="container-fluid">
+      <div class="row">
+            <CharacterCard v-for="char in store.charsList"
+            :key="char.id" :char="char"/>
       </div>
-      <div class="spinner" v-else>
-        <img class="loader" src="../assets/mini_loader.png" alt="loading..."></div>
+      <div class="spinner" v-show="!store.isLoaded">
+        <img class="loader d-flex mt-4 m-auto" src="../assets/mini_loader.png" alt="loading..."></div>
     </div>
+
+    </div>
+</main>    
 </template>
 
 
 <style lang="scss" scoped>
+  main{
+    height:calc(100vh - 66px);
+    overflow-y: scroll;
+  }
   .dc-container{
-    width:70%;
-    background-color:rgba(255,255,255,0.5);
+    width:80%;
     border-radius:10px;
     margin:20px auto;
+    overflow-y:auto;
+    .row{
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      row>*{
+        margin:0;
+        padding:0;
+      }
+    }
   }
 
   .loader{
     height:80px;
-    animation: heisenberg 1s ease-out infinite;
+    animation: heisenberg 0.5s ease-out infinite;
   }
 
   @keyframes heisenberg{
