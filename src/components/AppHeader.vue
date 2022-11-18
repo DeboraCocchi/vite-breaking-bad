@@ -1,8 +1,14 @@
 <script>
+import {store} from '../data/store'
 export default {
   name:'AppHeader',
   props:{
     title:String
+  },
+  data(){
+    return{
+      store
+    }
   }
 }
 </script>
@@ -13,12 +19,13 @@ export default {
         <img class="logo" src="../assets/bb-logo.png" alt="breaking-bad-logo">
       </a>
       <h2 class="col-8">{{title}}</h2>
-      <div class="input-group col-2 p-0">
-        <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">Select Category</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Alive</a></li>
-          <li><a class="dropdown-item" href="#">Dead</a></li>
-        </ul>
+
+      <div class="dropdown col-2">
+        <select class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" v-model="store.seriesToSearch" >
+          <option class="dropdown-item" selected value="">Choose category</option>
+          <option class="dropdown-item" value="Breaking Bad">Breaking Bad</option>
+          <option class="dropdown-item" value="Better Call Saul">Better Call Saul</option>
+        </select>
       </div>
     </div>
     
@@ -53,7 +60,7 @@ export default {
       margin:0;
       color:$primary-color;
       }
-      .input-group.col-2{
+      .dropdown.col-2{
        text-align: right;
       }
   }

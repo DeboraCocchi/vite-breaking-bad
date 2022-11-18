@@ -12,7 +12,7 @@ export default {
     <div class="card-body">
       <h5 class="card-title">{{char.name}}</h5>
       <h6 class="card-title nickname">{{char.nickname}}</h6>
-      <p class="card-text status">{{char.status}}</p>
+      <p class="card-text status">{{char.category}}</p>
       <a href="#" class="btn btn-warning">Scopri di più</a>
     </div>
 </div>
