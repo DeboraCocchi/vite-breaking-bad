@@ -9,11 +9,10 @@ export default {
 <template>
   <div class="card dc-card col-2">
     <img :src="char.img" class="card-img-top" :alt="char.name">
-    <div class="card-body">
+    <div class="card-body d-flex flex-column justify-content-center">
       <h5 class="card-title">{{char.name}}</h5>
       <h6 class="card-title nickname">{{char.nickname}}</h6>
-      <p class="card-text status">{{char.category}}</p>
-      <a href="#" class="btn btn-warning">Scopri di più</a>
+      <p class="card-text category">{{char.category}}</p>
     </div>
 </div>
 </template>
@@ -56,8 +55,9 @@ export default {
       color: #ffc107;
       line-height: 1.1rem;
     }
-    .status{
+    .category{
       font-size:70%;
+      margin-top:8px;
       font-weight:300;
     }
     a.btn-warning{

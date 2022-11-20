@@ -19,12 +19,15 @@ export default {
     }
   },
   methods:{
-    
     getApiCall(){
+      store.isLoaded = false;
       store.charsList=[];
       console.log(axios.get(store.apiUrl))
-      axios.get(store.apiUrl)
-      
+      axios.get(store.apiUrl, {
+        params:{
+          category:store.seriesToSearch
+        }
+      })
       .then( result =>{
          store.charsList = result.data;
          store.isLoaded = true;
@@ -34,7 +37,7 @@ export default {
       })
     }
   },
-  mounted(){
+  created(){
     this.getApiCall();
     console.log('lanciata!');
   }
@@ -43,11 +46,16 @@ export default {
 </script>
 
 <template>
-<AppHeader title="Breaking Bad Api"/>
+<AppHeader title="Breaking Bad Api" @cambiaSerie="getApiCall"/>
+
 <CharactersList/>
+
+
 </template>
 
 
 <style lang="scss">
  @use '/src/styles/general.scss';
+
+ 
 </style>

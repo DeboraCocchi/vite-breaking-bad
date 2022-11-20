@@ -21,7 +21,7 @@ export default {
       <h2 class="col-8">{{title}}</h2>
 
       <div class="dropdown col-2">
-        <select class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" v-model="store.seriesToSearch" >
+        <select class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-model="store.seriesToSearch" @change="$emit('cambiaSerie')">
           <option class="dropdown-item" selected value="">Choose category</option>
           <option class="dropdown-item" value="Breaking Bad">Breaking Bad</option>
           <option class="dropdown-item" value="Better Call Saul">Better Call Saul</option>
@@ -43,7 +43,7 @@ export default {
     background-color: white;
     &>.dc-container{
       height:100%;
-      padding: 8px;
+      padding: 8px 15px;
       align-items: center;
       justify-content: space-between;
       flex-wrap: nowrap;
